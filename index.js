@@ -121,7 +121,7 @@ function unflatten (target, opts) {
     let recipient = result
 
     while (key2 !== undefined) {
-      if (key1.includes('__proto__') || key1.includes('prototype') || key1.includes('constructor')) {
+      if (key1 === '__proto__' || key1 === 'prototype' || key1 === 'constructor') {
         return
       }
 
