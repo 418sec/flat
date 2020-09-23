@@ -120,10 +120,14 @@ function unflatten (target, opts) {
     let key2 = getkey(split[0])
     let recipient = result
 
-    while (key2 !== undefined) {
-      if (key1 === '__proto__') {
+    /*while (key2 !== undefined) {
+      if (key1.includes('__proto__') || key1.includes('prototype') || key1.includes('constructor')) {
         return
-      }
+      }*/
+      while (key2 !== undefined) {
+        if (key1 === '__proto__' || key1 === 'prototype' || key1 === 'constructor') {
+          return
+        }
 
       const type = Object.prototype.toString.call(recipient[key1])
       const isobject = (
